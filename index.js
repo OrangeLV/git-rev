@@ -25,4 +25,5 @@ module.exports = {
         cb(JSON.parse('[' + str + ']'))
       })
     }
+  , command : _command
 }
