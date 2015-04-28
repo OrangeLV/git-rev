@@ -19,6 +19,11 @@ module.exports = {
   , tag : function (cb) { 
       _command('git describe --always --tag --abbrev=0', cb)
     }
+  , message : function (cb) { 
+      _command('git log --oneline -1', function (str) {
+        cb(str.substr(str.indexOf(' ')+1))
+      })
+    }
   , log : function (cb) { 
       _command('git log --no-color --pretty=format:\'[ "%H", "%s", "%cr", "%an" ],\' --abbrev-commit', function (str) {
         str = str.substr(0, str.length-1)
